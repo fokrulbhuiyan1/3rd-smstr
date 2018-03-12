@@ -1,10 +1,10 @@
 #include<iostream>
 using namespace std;
-#define unvisited -1;
-#define marked 0;
-#define visited 1;
-#define CONNECTED 1;
-#define DISCONNECTED 0;
+#define unvisited -1
+#define marked 0
+#define visited 1
+#define CONNECTED 1
+#define DISCONNECTED 0
 
 
 int graph[100+1][100+1];
@@ -14,7 +14,8 @@ int queue[100],head=0,tail=0;
 int nodes,edge;
 
 void enqueue(int node){
-    queue[tail++]=node;
+    queue[tail] = node;
+    tail++;
 }
 
 int dequeue(){
@@ -24,7 +25,7 @@ int dequeue(){
 void bfs(int source, int nodes){
     int level[100];
     for(int i =1;i<=nodes;i++){
-    level[i]=unvisited;
+    level[i]=unvisited;}
     enqueue(source);
     level[source]=marked;
     while(head!=tail){
@@ -32,8 +33,8 @@ void bfs(int source, int nodes){
         cout<<vn<<" ";
         for(int i = 1;i<=nodes;i++){
             if(graph[vn][i]==CONNECTED){
-                if(level[i]=unvisited){
-                    level[i]==marked;
+                if(level[i]==unvisited){
+                    level[i]=marked;
                     enqueue(i);
                 }
             }
@@ -41,7 +42,7 @@ void bfs(int source, int nodes){
         level[vn]=visited;
     }
     cout<<endl;
-    }
+
 
 }
 
@@ -56,7 +57,7 @@ int main(){
     }
     cout<<"Enter the edge: ";
     cin>>edge;
-    for( int i = 1; i<=nodes;i++){
+    for( int i = 1; i<=edge;i++){
     cout<<"Enter the vertexes for edge: ";
     cin>>x>>y;
     graph[x][y]=graph[y][x]=CONNECTED;
